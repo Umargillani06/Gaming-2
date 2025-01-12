@@ -1,0 +1,98 @@
+/* Wheel container */
+#wheel-container {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #333; /* Optional: Adds border around the wheel */
+}
+
+/* The wheel itself */
+#wheel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    transition: transform 5s ease-out; /* For smooth spinning */
+    transform-origin: center;
+}
+
+/* Slices inside the wheel */
+.slice {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: #ffcc00; /* Default color, will be overridden by JS */
+    transform-origin: 100% 100%;
+    clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px; /* Adjust text size */
+    font-weight: bold;
+    color: white; /* Text color inside slices */
+}
+
+/* Center circle (for the spinner button) */
+#center-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #ff5733; /* Color of the button */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Adjusting the result text */
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Initially hide the logo */
+#congratulations-logo {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Make sure it’s on top */
+    opacity: 0;
+    transition: opacity 1s ease-out; /* Fade effect */
+}
+
+/* Add a bounce effect when it appears */
+@keyframes bounce {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    60% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.show-logo {
+    display: block;
+    animation: bounce 1.5s ease-out forwards;
+}
+
+/* For fading out effect */
+.hide-logo {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
